@@ -1,5 +1,5 @@
 #!name = Bilibili优化
-#!desc = 合并去广告,字幕繁转简,自动换区(需更改策略组名)
+#!desc = 合并去广告,字幕繁转简,自动换区
 #!author = cyh946
 #!homepage = https://github.com/cyh946/Loon
 #!icon = https://raw.githubusercontent.com/cyh946/Loon/master/bili.png
