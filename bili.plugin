@@ -51,6 +51,6 @@ http-response ^https://app.bilibili.com/x/v2/search/square requires-body=true,sc
 http-response ^https:\/\/app\.bilibili\.com\/bilibili\.app\.(view\.v1\.View\/View|dynamic\.v2\.Dynamic\/DynAll)$ script-path=https://raw.githubusercontent.com/app2smile/rules/master/js/bilibili-proto.js, requires-body=true, binary-body-mode=true, tag=bili-proto去广告, img-url=https://raw.githubusercontent.com/cyh946/Loon/master/bili.png
 # BiliBili_打开app自动切换为直连，仅quanx用
 ^https?:\/\/app\.bilibili\.com\/x\/resource\/domain url script-response-body 
-https://github.com/cyh946/Loon/bilizl.js
+https://raw.githubusercontent.com/cyh946/Loon/master/bilizl.js
 [MITM]
 hostname = app.bilibili.com, api.bilibili.com, api.live.bilibili.com, api.vc.bilibili.com, grpc.biliapi.net, upos-hz-mirrorakam.akamaized.net, *.hdslb.com, ap?.bili*i.net, ap?.bili*i.com, api.live.bilibili.com, api.vc.bilibili.com, manga.bilibili.com
