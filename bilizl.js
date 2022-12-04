@@ -1,4 +1,36 @@
+let $ = cyh();
 const Group = $.read('BiliArea_Policy') || '港台番剧';
+function nobyda() {
+	const isHTTP = typeof $httpClient != "undefined";
+	const isLoon = typeof $loon != "undefined";
+	const isQuanX = typeof $task != "undefined";
+	const isSurge = typeof $network != "undefined" && typeof $script != "undefined";
+	const ssid = (() => {
+		if (isQuanX && typeof ($environment) !== 'undefined') {
+			return $environment.ssid;
+		}
+		if (isLoon) {
+			return JSON.parse($config.getConfig()).ssid;
+		}
+	})();
+	const notify = (title, subtitle, message) => {
+		console.log(`${title}\n${subtitle}\n${message}`);
+		if (isQuanX) $notify(title, subtitle, message);
+		if (isHTTP) $notification.post(title, subtitle, message);
+	}
+	const read = (key) => {
+		if (isQuanX) return $prefs.valueForKey(key);
+		if (isHTTP) return $persistentStore.read(key);
+	}
+	const adapterStatus = (response) => {
+		if (!response) return null;
+		if (response.status) {
+			response["statusCode"] = response.status;
+		} else if (response.statusCode) {
+			response["status"] = response.statusCode;
+		}
+		return response;
+	}
 const getPolicy = (groupName) => {
 		if (isLoon) {
 			if (typeof ($config.getPolicy) === 'undefined') return 3;
