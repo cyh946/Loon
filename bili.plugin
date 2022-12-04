@@ -39,6 +39,7 @@ URL-REGEX,^https?:\/\/api\.bilibili\.com\/pgc\/season\/app\/related\/recommend\?
 
 
 [Script]
+http-response ^https?:\/\/app\.bilibili\.com\/x\/resource\/domain requires-body=true,script-path=https://raw.githubusercontent.com/cyh946/Loon/master/bilizl.js,tag=BiliBili打开自动直连(quanx专属), img-url=https://raw.githubusercontent.com/cyh946/Loon/master/bili.png
 http-response ^https:\/\/ap(p|i)\.bili(bili|api)\.(com|net)\/(pgc\/view\/v\d\/app\/season|x\/v\d\/search\/defaultwords)\?access_key requires-body=true,script-path=https://raw.githubusercontent.com/cyh946/Loon/master/bilihq.js,tag=BiliBili换区, img-url=https://raw.githubusercontent.com/cyh946/Loon/master/bili.png
 http-response ^https?:\/\/i.\.hdslb\.com\/bfs\/subtitle\/.+\.json$ requires-body=true,script-path=https://raw.githubusercontent.com/cyh946/Loon/master/bilicc.js,tag=BiliBili_字幕繁转简, img-url=https://raw.githubusercontent.com/cyh946/Loon/master/bili.png
 http-response ^https?:\/\/api\.bilibili\.com\/pgc\/page\/bangumi requires-body=true,script-path=https://raw.githubusercontent.com/cyh946/Loon/master/bili.js,tag=BiliBili_追番去广告, img-url=https://raw.githubusercontent.com/cyh946/Loon/master/bili.png
@@ -49,8 +50,5 @@ http-response ^https?:\/\/app\.bilibili\.com\/x\/v2\/feed\/index requires-body=t
 http-response ^https?:\/\/app\.bilibili\.com\/x\/v2\/account\/myinfo\? requires-body=true,script-path=https://raw.githubusercontent.com/cyh946/Loon/master/bili.js,tag=BiliBili_解锁1080p+, img-url=https://raw.githubusercontent.com/cyh946/Loon/master/bili.png
 http-response ^https://app.bilibili.com/x/v2/search/square requires-body=true,script-path=https://raw.githubusercontent.com/cyh946/Loon/master/bili.js,tag=BiliBili_去热搜, img-url=https://raw.githubusercontent.com/cyh946/Loon/master/bili.png
 http-response ^https:\/\/app\.bilibili\.com\/bilibili\.app\.(view\.v1\.View\/View|dynamic\.v2\.Dynamic\/DynAll)$ script-path=https://raw.githubusercontent.com/app2smile/rules/master/js/bilibili-proto.js, requires-body=true, binary-body-mode=true, tag=bili-proto去广告, img-url=https://raw.githubusercontent.com/cyh946/Loon/master/bili.png
-# BiliBili_打开app自动切换为直连，仅quanx用
-^https?:\/\/app\.bilibili\.com\/x\/resource\/domain url script-response-body 
-https://raw.githubusercontent.com/cyh946/Loon/master/bilizl.js
 [MITM]
 hostname = app.bilibili.com, api.bilibili.com, api.live.bilibili.com, api.vc.bilibili.com, grpc.biliapi.net, upos-hz-mirrorakam.akamaized.net, *.hdslb.com, ap?.bili*i.net, ap?.bili*i.com, api.live.bilibili.com, api.vc.bilibili.com, manga.bilibili.com
