@@ -1,6 +1,6 @@
 let $ = cyh();
 const Group = $.read('BiliArea_Policy') || '港台番剧';
-function nobyda() {
+function cyh() {
 	const isHTTP = typeof $httpClient != "undefined";
 	const isLoon = typeof $loon != "undefined";
 	const isQuanX = typeof $task != "undefined";
