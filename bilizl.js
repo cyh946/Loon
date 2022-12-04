@@ -77,7 +77,34 @@ function nobyda() {
 		}
 		return response;
 	}
-	const setPolicy = (group, policy) => {
+    const getPolicy = (groupName) => {
+		if (isSurge) {
+			if (typeof ($httpAPI) === 'undefined') return 3;
+			return new Promise((resolve) => {
+				$httpAPI("GET", "v1/policy_groups/select", {
+					group_name: encodeURIComponent(groupName)
+				}, (b) => resolve(b.policy || 2))
+			})
+		}
+		if (isLoon) {
+			if (typeof ($config.getPolicy) === 'undefined') return 3;
+			const getName = $config.getPolicy(groupName);
+			return getName || 2;
+		}
+		if (isQuanX) {
+			if (typeof ($configuration) === 'undefined') return 3;
+			return new Promise((resolve) => {
+				$configuration.sendMessage({
+					action: "get_policy_state"
+				}).then(b => {
+					if (b.ret && b.ret[groupName]) {
+						resolve(b.ret[groupName][1]);
+					} else resolve(2);
+				}, () => resolve());
+			})
+		}
+	}	
+   const setPolicy = (group, policy) => {
 		if (isLoon && typeof ($config.getPolicy) !== 'undefined') {
 			const set = $config.setSelectPolicy(group, "direct");
 			return set || 0;
